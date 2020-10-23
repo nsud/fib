@@ -4,6 +4,8 @@ services:
   cach:
     restart: always
     image: memcached
+    ports:
+      - "11211:11211"
 
   web:
     restart: always
