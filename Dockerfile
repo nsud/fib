@@ -5,8 +5,10 @@ LABEL maintainer @nataliasudar
 #RUN apt-get -y install cron rsyslog vim && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/code
-COPY code/*.py ./
+COPY requirements.txt ./
 RUN pip3 install -r requirements.txt
+
+COPY code/*.py ./
 
 RUN useradd app
 RUN chown app:app -R ../code

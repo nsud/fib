@@ -7,7 +7,6 @@ services:
 
   web:
     restart: always
-    depends_on: cach
     build:
       context: .
       dockerfile: Dockerfile
