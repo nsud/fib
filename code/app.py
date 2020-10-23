@@ -11,12 +11,13 @@ app = Flask(__name__)
 @app.route('/<int:k>', methods=['GET'])
 def index(k):
     result = client.get('k')
-
+    mess = 'Число взято из кэша'
     if result is None:
         result = fibo_steroids(k)
         client.set('k', result)
+        mess = 'Свежатинка. Число занесено в кэш'
 
-    return f"{k}-ое число Фибоначчи: {str(result)}"
+    return f"{mess}\n{k}-ое число Фибоначчи: {str(result)}"
 
 
 @functools.lru_cache(maxsize=None)
